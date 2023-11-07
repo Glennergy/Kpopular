@@ -118,6 +118,10 @@ const authRoutes = require("./routes/auth");
 
 app.use("/auth", authRoutes);
 
+const albumRoutes = require("./routes/albums-routes");
+
+app.use("/album", albumRoutes);
+
 app.listen(PORT, () => {
   console.log(`🚀 Server listening on port ${PORT}.`);
 });

@@ -7,19 +7,28 @@ exports.seed = async function (knex) {
   await knex("artists").del();
   await knex("artists").insert([
     {
-      id: 1,
       artist_spotifyid: "2dIgFjalVxs4ThymZ67YCE",
       artist_name: "Stray Kids",
     },
     {
-      id: 2,
       artist_spotifyid: "7nqOGRxlXj7N2JYbgNEjYH",
       artist_name: "Seventeen",
     },
     {
-      id: 3,
       artist_spotifyid: "4SpbR6yFEvexJuaBpgAU5p",
       artist_name: "LE SSERAFIM",
+    },
+    {
+      artist_spotifyid: "3Nrfpe0tUJi4K4DXYWgMUX",
+      artist_name: "BTS",
+    },
+    {
+      artist_spotifyid: "4Kxlr1PRlDKEB0ekOCyHgX",
+      artist_name: "BIGBANG",
+    },
+    {
+      artist_spotifyid: "41MozSoPIsD1dJM0CLPjZF",
+      artist_name: "BLACKPINK",
     },
   ]);
 };

@@ -28,10 +28,10 @@ const Header = () => {
                 ? "header__nav-link header__nav-link--active"
                 : "header__nav-link"
             }
-            to="/profile"
+            to="/posts"
             exact="true"
           >
-            Profile
+            Albums
           </NavLink>
           <NavLink
             className={(navData) =>
@@ -39,10 +39,10 @@ const Header = () => {
                 ? "header__nav-link header__nav-link--active"
                 : "header__nav-link"
             }
-            to="/posts"
+            to="/profile"
             exact="true"
           >
-            Albums
+            Profile
           </NavLink>
         </nav>
       </div>
