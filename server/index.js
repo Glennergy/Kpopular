@@ -70,6 +70,8 @@ passport.use(
               .insert({
                 user_spotifyid: profile.id,
                 username: profile.username,
+                full_name: profile.displayName,
+                avatar_url: profile.photos[0].value,
               })
               .then((userId) => {
                 // Pass the user object to serialize function
@@ -92,6 +94,24 @@ passport.serializeUser((user, done) => {
 
   // Store only the user id in session
   done(null, user.id);
+});
+
+passport.deserializeUser((userId, done) => {
+  console.log("deserializeUser (user id):", userId);
+
+  // Query user information from the database for currently authenticated user
+  knex("user")
+    .where({ id: userId })
+    .then((user) => {
+      // Remember that knex will return an array of records, so we need to get a single record from it
+      console.log("req.user:", user[0]);
+
+      // The full user object will be attached to request object as `req.user`
+      done(null, user[0]);
+    })
+    .catch((err) => {
+      console.log("Error finding user", err);
+    });
 });
 
 const authRoutes = require("./routes/auth");

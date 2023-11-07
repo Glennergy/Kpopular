@@ -4,21 +4,9 @@ exports.up = function (knex) {
       table.increments("id").primary();
       table.string("username").notNullable();
       table.string("user_spotifyid").notNullable();
-      table.timestamp("updated_at").defaultTo(knex.fn.now());
-    })
-    .createTable("userdetails", (table) => {
-      table.increments("id").primary();
-      table.integer("user_id").unsigned().notNullable();
       table.string("full_name", 75).notNullable();
       table.string("avatar_url").notNullable();
-      table.string("country").notNullable();
       table.timestamp("updated_at").defaultTo(knex.fn.now());
-      table
-        .foreign("user_id")
-        .references("id")
-        .inTable("user")
-        .onUpdate("CASCADE")
-        .onDelete("CASCADE");
     })
     .createTable("usercollection", (table) => {
       table.increments("id").primary();
@@ -45,6 +33,5 @@ exports.down = function (knex) {
   return knex.schema
     .dropTable("usercollection")
     .dropTable("user")
-    .dropTable("artists")
-    .dropTable("userdetails");
+    .dropTable("artists");
 };
