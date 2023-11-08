@@ -28,7 +28,7 @@ const Header = () => {
                 ? "header__nav-link header__nav-link--active"
                 : "header__nav-link"
             }
-            to="/posts"
+            to="/albums"
             exact="true"
           >
             Albums

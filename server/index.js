@@ -56,7 +56,6 @@ passport.use(
       callbackURL: process.env.SPOTIFY_CALLBACK_URL,
     },
     function (accessToken, refreshToken, expires_in, profile, done) {
-      console.log("spotify profile:", profile);
       knex("user")
         .select("id")
         .where({ user_spotifyid: profile.id })
@@ -75,7 +74,7 @@ passport.use(
               })
               .then((userId) => {
                 // Pass the user object to serialize function
-                done(null, { id: userId[0] });
+                done(null, accessToken, { id: userId[0] });
               })
               .catch((err) => {
                 console.log("Error creating a user", err);
@@ -103,9 +102,6 @@ passport.deserializeUser((userId, done) => {
   knex("user")
     .where({ id: userId })
     .then((user) => {
-      // Remember that knex will return an array of records, so we need to get a single record from it
-      console.log("req.user:", user[0]);
-
       // The full user object will be attached to request object as `req.user`
       done(null, user[0]);
     })
