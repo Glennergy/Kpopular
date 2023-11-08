@@ -22,7 +22,6 @@ const getAuth = async () => {
     });
     //return access token
     return response.data.access_token;
-    //console.log(response.data.access_token);
   } catch (error) {
     //on fail, log the error in console
     console.log(error);
