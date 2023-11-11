@@ -12,7 +12,9 @@ exports.up = function (knex) {
       table.increments("id").primary();
       table.integer("user_id").unsigned().notNullable();
       table.string("spotify_id", 75).notNullable();
+      table.string("album_name").notNullable();
       table.string("artist_name").notNullable();
+      table.string("image_url").notNullable();
       table.timestamp("date_added").defaultTo(knex.fn.now());
       table
         .foreign("user_id")

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Login from "../components/Login/Login";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -43,7 +44,8 @@ const HomePage = () => {
         </div>
       ) : (
         <div>
-          <h1> Login to Start! </h1>
+          <h1> Login To Start Your Collection! </h1>
+          <Login />
         </div>
       )}
     </section>

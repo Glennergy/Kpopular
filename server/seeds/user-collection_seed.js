@@ -9,7 +9,10 @@ exports.seed = async function (knex) {
     {
       user_id: "1",
       spotify_id: "3Pel3gWsPxVpZVrciU0Fm6",
+      album_name: "5-STAR",
       artist_name: "Stray Kids",
+      image_url:
+        "https://i.scdn.co/image/ab67616d0000b273e27ba26bc14a563bf3d09882",
     },
   ]);
 };

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Login from "../components/Login/Login";
+import Logout from "../components/Logout/Logout";
+import AlbumCover from "../components/AlbumCover/AlbumCover";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -7,6 +10,7 @@ const ProfilePage = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [profileData, setProfileData] = useState(null);
+  const [userCollection, setUserCollection] = useState([]);
 
   useEffect(() => {
     // Send a GET request for profile information
@@ -32,6 +36,19 @@ const ProfilePage = () => {
       });
   }, []);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      axios
+        .get(`${serverUrl}/user/collection`, { withCredentials: true })
+        .then((res) => {
+          setUserCollection(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [profileData]);
+
   return (
     <section className="profile-page">
       <h1>Profile Page</h1>
@@ -47,7 +64,20 @@ const ProfilePage = () => {
             />
             <div className="profile-page__logout-wrapper">
               {/* Render a logout button */}
-              {/* <LogoutButton /> */}
+              <Logout />
+            </div>
+            <div>
+              <h2>Your Collection</h2>
+
+              {userCollection.map((album, key) => (
+                <AlbumCover
+                  key={key}
+                  name={album.album_name}
+                  id={album.spotify_id}
+                  image={album.image_url}
+                  artist={album.artist_name}
+                />
+              ))}
             </div>
           </>
         )
@@ -57,7 +87,7 @@ const ProfilePage = () => {
           <p>
             <strong>This page requires authentication.</strong>
           </p>
-          {/* <LoginButton /> */}
+          <Login />
         </>
       )}
     </section>

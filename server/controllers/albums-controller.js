@@ -35,7 +35,7 @@ const getAllAlbums = async (req, res) => {
 
   axios
     .get(
-      `https://api.spotify.com/v1/artists/2dIgFjalVxs4ThymZ67YCE/albums?include_groups=album%2Csingle&market=us`,
+      `https://api.spotify.com/v1/artists/${req.params.id}/albums?include_groups=album&market=us`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -44,6 +44,23 @@ const getAllAlbums = async (req, res) => {
     )
     .then((response) => {
       res.json(response.data.items);
+    })
+    .catch((error) => {
+      res.json(error);
+    });
+};
+
+const getSingleAlbumDetails = async (req, res) => {
+  const token = await getAuth();
+  axios
+    .get(`https://api.spotify.com/v1/albums/${req.body.spotifyid}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      console.log(response.data.tracks.items);
+      res.json(response.data);
     })
     .catch((error) => {
       res.json(error);
@@ -68,6 +85,7 @@ const getSingleArtist = (req, res) => {
 
 module.exports = {
   getSingleArtist,
+  getSingleAlbumDetails,
   getAllArtistIds,
   getAllAlbums,
 };

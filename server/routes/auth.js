@@ -20,11 +20,10 @@ router.get(
 router.get("/profile", (req, res) => {
   if (req.user === undefined)
     return res.status(401).json({ message: "Unauthorized" });
-  console.log("USER IS HERE" + req.accessToken);
   res.status(200).json(req.user);
 });
 
-router.get("logout", (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout((error) => {
     if (error) {
       return res.status(500).json({ message: "Error", error: error });

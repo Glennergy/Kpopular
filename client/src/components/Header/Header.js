@@ -39,6 +39,17 @@ const Header = () => {
                 ? "header__nav-link header__nav-link--active"
                 : "header__nav-link"
             }
+            to="/artists"
+            exact="true"
+          >
+            Artists
+          </NavLink>
+          <NavLink
+            className={(navData) =>
+              navData.isActive
+                ? "header__nav-link header__nav-link--active"
+                : "header__nav-link"
+            }
             to="/profile"
             exact="true"
           >

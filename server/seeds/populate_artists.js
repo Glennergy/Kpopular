@@ -30,5 +30,9 @@ exports.seed = async function (knex) {
       artist_spotifyid: "41MozSoPIsD1dJM0CLPjZF",
       artist_name: "BLACKPINK",
     },
+    {
+      artist_spotifyid: "5r1tUTxVSgvBHnoDuDODPH",
+      artist_name: "IZ*ONE",
+    },
   ]);
 };

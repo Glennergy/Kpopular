@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import Header from "./components/Header/Header";
 import ProfilePage from "./pages/ProfilePage";
 import AlbumsPage from "./pages/AlbumsPage";
+import ArtistsPage from "./pages/ArtistPage";
 import "./App.scss";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/auth-fail" element={<AuthFailPage />} />
           <Route path="/albums" element={<AlbumsPage />} />
+          <Route path="/artists" element={<ArtistsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
