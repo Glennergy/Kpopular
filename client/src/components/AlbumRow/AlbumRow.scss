@@ -1,0 +1,16 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+
+.album-row {
+  margin: 24px 0;
+  display: block;
+  &__name {
+    padding: 16px;
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

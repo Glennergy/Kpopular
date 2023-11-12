@@ -1,0 +1,16 @@
+@import "../../styles/partials/colors";
+@import "../../styles/partials/mixins";
+
+.delete-modal {
+  padding: 1rem;
+  position: absolute;
+  background-color: $white-color;
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $white-color;
+  }
+}

@@ -6,26 +6,20 @@ import AlbumCover from "../components/AlbumCover/AlbumCover";
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const ArtistPage = () => {
-  const [albums, setAlbums] = useState([]);
+  const [artists, setArtists] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    axios.get(`${serverUrl}/album/2dIgFjalVxs4ThymZ67YCE`).then((response) => {
-      setAlbums(response.data);
+    axios.get(`${serverUrl}/album/artists`).then((response) => {
+      setArtists(response.data);
     });
   }, []);
 
   return (
     <section>
-      <h1>Albums</h1>
-      {albums.map((album, key) => (
-        <AlbumCover
-          key={key}
-          name={album.name}
-          id={album.id}
-          image={album.images[0].url}
-          artist={album.artists[0].name}
-        />
+      <h1>Artists</h1>
+      {artists.map((artists, key) => (
+        <h2>{artists.artist_name}</h2>
       ))}
     </section>
   );

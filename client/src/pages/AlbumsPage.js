@@ -1,31 +1,32 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import AlbumCover from "../components/AlbumCover/AlbumCover";
+import AlbumRow from "../components/AlbumRow/AlbumRow";
+import AlbumDetails from "../components/AlbumDetails/AlbumDetails";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const AlbumsPage = () => {
-  const [albums, setAlbums] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [albumModalInfo, setAlbumModalInfo] = useState({});
+  const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    axios.get(`${serverUrl}/album/2dIgFjalVxs4ThymZ67YCE`).then((response) => {
-      console.log(response.data);
-      setAlbums(response.data);
+    axios.get(`${serverUrl}/album/artists`).then((response) => {
+      setArtists(response.data);
     });
   }, []);
 
   return (
     <section>
+      <AlbumDetails />
       <h1>Albums</h1>
-      {albums.map((album, key) => (
-        <AlbumCover
+      {artists.map((artist, key) => (
+        <AlbumRow
           key={key}
-          name={album.name}
-          id={album.id}
-          image={album.images[0].url}
-          artist={album.artists[0].name}
+          name={artist.artist_name}
+          artist_id={artist.artist_spotifyid}
+          setAlbumModalInfo={setAlbumModalInfo}
         />
       ))}
     </section>

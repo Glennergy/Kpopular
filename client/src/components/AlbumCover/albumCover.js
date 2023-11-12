@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./AlbumCover.scss";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -31,9 +32,7 @@ const AlbumCover = ({ name, image, artist, id }) => {
         className="album-cover__image"
         onClick={addToCollection}
       />
-      <p className="album-cover__name">
-        {name} by {artist}{" "}
-      </p>
+      <p className="album-cover__name">{name}</p>
     </div>
   );
 };
