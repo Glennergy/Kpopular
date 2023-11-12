@@ -17,6 +17,10 @@ const AlbumsPage = () => {
     });
   }, []);
 
+  useEffect(() => {
+    console.log(albumModalInfo);
+  }, [albumModalInfo]);
+
   return (
     <section>
       <AlbumDetails />

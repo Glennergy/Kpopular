@@ -3,7 +3,7 @@ import "./AlbumCover.scss";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
-const AlbumCover = ({ name, image, artist, id }) => {
+const AlbumCover = ({ name, image, artist, id, albumDetailsClick }) => {
   const addToCollection = () => {
     axios
       .post(
@@ -30,7 +30,7 @@ const AlbumCover = ({ name, image, artist, id }) => {
       <img
         src={image}
         className="album-cover__image"
-        onClick={addToCollection}
+        onClick={() => albumDetailsClick(id)}
       />
       <p className="album-cover__name">{name}</p>
     </div>

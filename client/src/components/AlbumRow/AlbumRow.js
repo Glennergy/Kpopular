@@ -13,19 +13,29 @@ const AlbumRow = ({ artist_id, name, setAlbumModalInfo }) => {
   useEffect(() => {
     axios.get(`${serverUrl}/album/${artist_id}`).then((response) => {
       const newAlbum = response.data.filter((album) => album.total_tracks > 4);
-      console.log(response.data);
       setAlbums(newAlbum);
     });
   }, []);
 
-  function albumDetailsClick(album) {
-    const info = {
-      name: album.name,
-      id: album.id,
-      image: album.images[0].url,
-    };
-    console.log(info);
-    setAlbumModalInfo(info);
+  function albumDetailsClick(id) {
+    axios.get(`${serverUrl}/album/details/${id}`).then((response) => {
+      const tracksArray = response.data.tracks.items;
+      let newTracksArray = [{}];
+      tracksArray.forEach((track) => {
+        newTracksArray.push({
+          title: track.name,
+          tracknumber: track.track_number,
+        });
+      });
+      newTracksArray.shift();
+      const info = {
+        spotify_id: id,
+        album_title: response.data.name,
+        total_tracks: response.data.total_tracks,
+        track_list: newTracksArray,
+      };
+      setAlbumModalInfo(info);
+    });
   }
 
   return (
@@ -39,6 +49,7 @@ const AlbumRow = ({ artist_id, name, setAlbumModalInfo }) => {
             id={album.id}
             image={album.images[0].url}
             artist={album.artists[0].name}
+            albumDetailsClick={albumDetailsClick}
           />
         ))}
       </div>
