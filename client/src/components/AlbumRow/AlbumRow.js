@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./AlbumRow.scss";
@@ -33,8 +32,12 @@ const AlbumRow = ({ artist_id, name, setAlbumModalInfo }) => {
         album_title: response.data.name,
         total_tracks: response.data.total_tracks,
         track_list: newTracksArray,
+        artist: response.data.artists[0].name,
         url: response.data.external_urls.spotify,
+        image: response.data.images[0].url,
+        release: response.data.release_date,
       };
+
       setAlbumModalInfo(info);
     });
   }

@@ -38,7 +38,7 @@ const AddAlbumToUserCollection = (req, res) => {
     .select("id")
     .where({
       user_id: req.user.id,
-      spotify_id: req.body.spotify_id.id,
+      spotify_id: req.body.spotify_id,
     })
     .then((user) => {
       if (user.length) {
@@ -48,10 +48,10 @@ const AddAlbumToUserCollection = (req, res) => {
         knex("usercollection")
           .insert({
             user_id: req.user.id,
-            spotify_id: req.body.spotify_id.id,
-            album_name: req.body.album_name.name,
-            artist_name: req.body.artist.artist,
-            image_url: req.body.image_url.image,
+            spotify_id: req.body.spotify_id,
+            album_name: req.body.album_name,
+            artist_name: req.body.artist,
+            image_url: req.body.image_url,
           })
           .then((collectionID) => {
             res.status(201).json({ newCollectionId: collectionID });

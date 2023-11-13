@@ -8,7 +8,7 @@
   top: 202px;
   left: 48px;
   right: 48px;
-  height: 19rem;
+  height: fit-content;
   &__overlay {
     position: fixed;
     top: 0;
@@ -16,5 +16,19 @@
     right: 0;
     bottom: 0;
     background-color: rgba($color: #444444, $alpha: 0.5);
+  }
+  &__image {
+    height: 175px;
+    width: 175px;
+  }
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 }
