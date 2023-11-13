@@ -1,17 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import AlbumRow from "../components/AlbumRow/AlbumRow";
-import AlbumDetails from "../components/AlbumDetails/AlbumDetails";
+import AlbumRow from "../../components/AlbumRow/AlbumRow";
+import AlbumDetails from "../../components/AlbumDetails/AlbumDetails";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const AlbumsPage = () => {
-  const [modalOpen, setModalOpen] = useState(false);
   const [albumModalInfo, setAlbumModalInfo] = useState({});
   const [artists, setArtists] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userCollection, setUserCollection] = useState([]);
+  const { artistid } = useParams();
+  const { artistname } = useParams();
 
   useEffect(() => {
     // Send a GET request for profile information
@@ -54,33 +55,47 @@ const AlbumsPage = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(albumModalInfo);
-  }, [albumModalInfo]);
-
   function onModalCancel() {
     setAlbumModalInfo({});
   }
 
-  return (
-    <section>
-      <AlbumDetails
-        albumModalInfo={albumModalInfo}
-        onCancel={onModalCancel}
-        userCollection={userCollection}
-        isLoggedIn={isLoggedIn}
-      />
-      <h1>Albums</h1>
-      {artists.map((artist, key) => (
-        <AlbumRow
-          key={key}
-          name={artist.artist_name}
-          artist_id={artist.artist_spotifyid}
-          setAlbumModalInfo={setAlbumModalInfo}
+  if (artistid) {
+    return (
+      <section>
+        <AlbumDetails
+          albumModalInfo={albumModalInfo}
+          onCancel={onModalCancel}
+          userCollection={userCollection}
+          isLoggedIn={isLoggedIn}
         />
-      ))}
-    </section>
-  );
+        <AlbumRow
+          artist_id={artistid}
+          setAlbumModalInfo={setAlbumModalInfo}
+          artistname={artistname}
+        />
+      </section>
+    );
+  } else {
+    return (
+      <section>
+        <AlbumDetails
+          albumModalInfo={albumModalInfo}
+          onCancel={onModalCancel}
+          userCollection={userCollection}
+          isLoggedIn={isLoggedIn}
+        />
+        <h1>Albums</h1>
+        {artists.map((artist, key) => (
+          <AlbumRow
+            key={key}
+            name={artist.artist_name}
+            artist_id={artist.artist_spotifyid}
+            setAlbumModalInfo={setAlbumModalInfo}
+          />
+        ))}
+      </section>
+    );
+  }
 };
 
 export default AlbumsPage;

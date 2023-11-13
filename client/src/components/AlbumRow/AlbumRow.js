@@ -5,7 +5,7 @@ import AlbumCover from "../AlbumCover/AlbumCover";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
-const AlbumRow = ({ artist_id, name, setAlbumModalInfo }) => {
+const AlbumRow = ({ artist_id, name, setAlbumModalInfo, artistname }) => {
   const [albums, setAlbums] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -42,23 +42,47 @@ const AlbumRow = ({ artist_id, name, setAlbumModalInfo }) => {
     });
   }
 
-  return (
-    <div className="album-row">
-      <h3 className="album-row__name">{name}</h3>
-      <div className="album-row__list">
-        {albums.map((album, key) => (
-          <AlbumCover
-            key={key}
-            name={album.name}
-            id={album.id}
-            image={album.images[0].url}
-            artist={album.artists[0].name}
-            albumDetailsClick={albumDetailsClick}
-          />
-        ))}
+  if (name) {
+    return (
+      <div className="album-row">
+        <h3 className="album-row__name" id={name}>
+          {name}
+        </h3>
+        <div className="album-row__list">
+          {albums.map((album, key) => (
+            <AlbumCover
+              key={key}
+              name={album.name}
+              id={album.id}
+              image={album.images[0].url}
+              artist={album.artists[0].name}
+              albumDetailsClick={albumDetailsClick}
+            />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="album-row">
+        <h3 className="album-row__name" id={artist_id}>
+          {artistname}
+        </h3>
+        <div className="album-row__list">
+          {albums.map((album, key) => (
+            <AlbumCover
+              key={key}
+              name={album.name}
+              id={album.id}
+              image={album.images[0].url}
+              artist={album.artists[0].name}
+              albumDetailsClick={albumDetailsClick}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
 };
 
 export default AlbumRow;

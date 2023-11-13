@@ -70,11 +70,12 @@ passport.use(
                 user_spotifyid: profile.id,
                 username: profile.username,
                 full_name: profile.displayName,
-                avatar_url: profile.photos[0].value,
+                avatar_url: profile.photos[1].value,
               })
               .then((userId) => {
                 // Pass the user object to serialize function
-                done(null, accessToken, { id: userId[0] });
+                console.log("Testing" + userId);
+                done(null, { id: userId });
               })
               .catch((err) => {
                 console.log("Error creating a user", err);
@@ -90,17 +91,18 @@ passport.use(
 
 passport.serializeUser((user, done) => {
   console.log("serializeUser (user object):", user);
-
+  console.log(user.id);
   // Store only the user id in session
   done(null, user.id);
 });
 
 passport.deserializeUser((userId, done) => {
+  console.log("deserializeUser (user id):", userId[0]);
   console.log("deserializeUser (user id):", userId);
 
   // Query user information from the database for currently authenticated user
   knex("user")
-    .where({ id: userId })
+    .where({ id: userId[0] })
     .then((user) => {
       // The full user object will be attached to request object as `req.user`
       done(null, user[0]);

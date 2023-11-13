@@ -72,17 +72,34 @@ const getSingleAlbumDetails = async (req, res) => {
 // Get all Artist Spotify IDs
 const getAllArtistIds = (req, res) => {
   const artists = knex("artists").then((data) => {
-    console.log(data);
     res.status(200).json(data);
   });
 };
 
 // Get a Single Artist Spotify ID from SQL
-const getSingleArtist = (req, res) => {
-  const artist = knex("artists")
-    .where({ id: req.params.id })
+const getSingleArtist = async (req, res) => {
+  const token = await getAuth();
+  knex("artists")
+    .where({ artist_spotifyid: req.params.id })
     .then((data) => {
-      res.status(200).json(data);
+      console.log(data[0].artist_spotifyid);
+      axios
+        .get(`https://api.spotify.com/v1/artists/${data[0].artist_spotifyid}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          const artistData = {
+            id: response.data.id,
+            name: response.data.name,
+            image: response.data.images[0].url,
+            url: response.data.external_urls.spotify,
+          };
+
+          res.json(artistData);
+        });
     });
 };
 

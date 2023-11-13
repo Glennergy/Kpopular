@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Login from "../components/Login/Login";
-import Logout from "../components/Logout/Logout";
-import AlbumCover from "../components/AlbumCover/AlbumCover";
-import AlbumDetails from "../components/AlbumDetails/AlbumDetails";
+import Login from "../../components/Login/Login";
+import Logout from "../../components/Logout/Logout";
+import AlbumCover from "../../components/AlbumCover/AlbumCover";
+import AlbumDetails from "../../components/AlbumDetails/AlbumDetails";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 

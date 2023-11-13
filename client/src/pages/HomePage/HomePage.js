@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Login from "../components/Login/Login";
+import Login from "../../components/Login/Login";
+import "./HomePage.scss";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -33,15 +35,30 @@ const HomePage = () => {
   }, []);
 
   return (
-    <section>
-      <div>
+    <section className="homepage">
+      <div className="homepage__upper">
         <h1>Welcome to Kpopular!</h1>
         <p>Your go to source for all things related to Kpop Albums.</p>
       </div>
       {isLoggedIn ? (
-        <div>
-          <h1> Welcome </h1>
-        </div>
+        <>
+          <div className="homepage__navigation">
+            <h1 className="homepage__title">Start Your Collection</h1>
+            <div className="homepage__cardholder">
+              <Link to="/albums">
+                <div className="homepage__card--album">
+                  <p className="homepage__card--text">Albums</p>
+                </div>
+              </Link>
+
+              <Link to="/artists">
+                <div className="homepage__card--artists">
+                  <p className="homepage__card--text">Artists</p>
+                </div>
+              </Link>
+            </div>
+          </div>
+        </>
       ) : (
         <div>
           <h1> Login To Start Your Collection! </h1>

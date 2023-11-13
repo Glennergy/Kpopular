@@ -20,11 +20,14 @@ const AlbumDetails = ({
 
   // Determines if selected album is in the current users collection
   useEffect(() => {
-    console.log(modalIsOpen);
+    console.log(albumModalInfo + " has been changed");
     if (modalIsOpen) {
       userCollection.forEach((album) => {
-        if (album.spotify_id === albumModalInfo.spotify_id)
+        if (album.spotify_id === albumModalInfo.spotify_id) {
+          console.log(album.spotify_id);
           setInCollection(true);
+          return;
+        } else setInCollection(false);
       });
     }
   }, [albumModalInfo]);
@@ -79,6 +82,13 @@ const AlbumDetails = ({
               <p>{albumModalInfo.release}</p>
             </div>
           </div>
+        </div>
+        <div className="album-modal__container">
+          <div>
+            <h3>Track List</h3>
+            {getTracks()}
+          </div>
+
           <div className="album-modal__button-container">
             <Link to={albumModalInfo.url} target="_blank">
               <span>Listen On Spotify</span>
@@ -93,10 +103,6 @@ const AlbumDetails = ({
               image_url={albumModalInfo.image}
             />
           </div>
-        </div>
-        <div>
-          <h3>Track List</h3>
-          {getTracks()}
         </div>
       </div>
     </Modal>
