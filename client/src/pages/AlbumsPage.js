@@ -21,9 +21,17 @@ const AlbumsPage = () => {
     console.log(albumModalInfo);
   }, [albumModalInfo]);
 
+  function onModalCancel() {
+    setAlbumModalInfo({});
+  }
+
   return (
     <section>
-      <AlbumDetails />
+      <AlbumDetails
+        albumModalInfo={albumModalInfo}
+        onCancel={onModalCancel}
+        setAlbumModalInfo={setAlbumModalInfo}
+      />
       <h1>Albums</h1>
       {artists.map((artist, key) => (
         <AlbumRow

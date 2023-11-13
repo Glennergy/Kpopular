@@ -33,6 +33,7 @@ const AlbumRow = ({ artist_id, name, setAlbumModalInfo }) => {
         album_title: response.data.name,
         total_tracks: response.data.total_tracks,
         track_list: newTracksArray,
+        url: response.data.external_urls.spotify,
       };
       setAlbumModalInfo(info);
     });
