@@ -1,9 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./ArtistPage.scss";
-import AlbumCover from "../../components/AlbumCover/AlbumCover";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
