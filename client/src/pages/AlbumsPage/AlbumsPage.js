@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AlbumRow from "../../components/AlbumRow/AlbumRow";
 import AlbumDetails from "../../components/AlbumDetails/AlbumDetails";
+import "./AlbumsPage.scss";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -61,7 +62,7 @@ const AlbumsPage = () => {
 
   if (artistid) {
     return (
-      <section>
+      <section className="albumspage">
         <AlbumDetails
           albumModalInfo={albumModalInfo}
           onCancel={onModalCancel}
@@ -77,14 +78,14 @@ const AlbumsPage = () => {
     );
   } else {
     return (
-      <section>
+      <section className="albumspage">
         <AlbumDetails
           albumModalInfo={albumModalInfo}
           onCancel={onModalCancel}
           userCollection={userCollection}
           isLoggedIn={isLoggedIn}
         />
-        <h1>Albums</h1>
+        <h1 className="albumspage__header">Albums</h1>
         {artists.map((artist, key) => (
           <AlbumRow
             key={key}

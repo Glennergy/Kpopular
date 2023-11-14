@@ -29,6 +29,7 @@ const getAuth = async () => {
 };
 
 const AddAlbumToUserCollection = (req, res) => {
+  console.log(req.body);
   if (req.user === undefined)
     return res.status(401).json({ message: "Not Logged In" });
   if (!req.body.spotify_id || !req.body.artist) {
@@ -81,27 +82,28 @@ const ViewAlbumsbyUser = async (req, res) => {
 };
 
 const RemoveAlbumFromCollection = async (req, res) => {
+  console.log(req.params.id);
   if (req.user === undefined)
-    return res.status(401).json({ message: "Not Logged In" });
-  if (!req.body.spotify_id || !req.body.artist) {
-    return res.status(400).json({ message: "Missing Album Id or Artist Name" });
+    return res.status(401).json({ message: "Not Logged In 2" });
+
+  if (!req.params.id) {
+    return res.status(400).json({ message: "Missing Album Id " });
   }
   knex("usercollection")
     .select("id")
     .where({
       user_id: req.user.id,
-      spotify_id: req.body.spotify_id.id,
+      spotify_id: req.params.id,
     })
-    .then((user) => {
-      if (!user.length) {
-        // If user is found, pass the user object to serialize function
+    .then((albums) => {
+      if (!albums.length) {
         console.log("album found in collection");
         res.status(400).json({ message: "album is not in user's collection" });
       } else {
         knex("usercollection")
           .where({
             user_id: req.user.id,
-            spotify_id: req.body.spotify_id.id,
+            spotify_id: req.params.id,
           })
           .delete()
           .then((collectionID) => {
@@ -117,6 +119,7 @@ const RemoveAlbumFromCollection = async (req, res) => {
 };
 
 module.exports = {
+  RemoveAlbumFromCollection,
   AddAlbumToUserCollection,
   ViewAlbumsbyUser,
 };

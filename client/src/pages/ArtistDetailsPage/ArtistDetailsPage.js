@@ -25,7 +25,7 @@ const ArtistDetailsPage = () => {
         <h1>{artistInfo.name}</h1>
         <img src={artistInfo.image} alt="artist image"></img>
       </div>
-      <div className="artist__left">
+      <div className="artist__right">
         <Link to={artistInfo.url} target="_blank">
           <span> Check out Artist Spotify Page</span>
         </Link>

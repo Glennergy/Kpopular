@@ -97,12 +97,11 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((userId, done) => {
-  console.log("deserializeUser (user id):", userId[0]);
   console.log("deserializeUser (user id):", userId);
 
   // Query user information from the database for currently authenticated user
   knex("user")
-    .where({ id: userId[0] })
+    .where({ id: userId })
     .then((user) => {
       // The full user object will be attached to request object as `req.user`
       done(null, user[0]);

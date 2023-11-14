@@ -1,0 +1,37 @@
+@import "../../styles/partials/colors";
+
+.profile-page {
+  background-color: $lavender-color;
+  height: 100%;
+  &__header {
+    padding: 16px;
+    color: $white-color;
+  }
+  &__upper {
+    margin: 0 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 3px solid $coolgray-color;
+
+    &--right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      color: $white-color;
+    }
+  }
+  &__lower {
+    padding: 16px;
+    color: $white-color;
+  }
+  &__lower-cont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+    border: 3px solid $coolgray-color;
+  }
+}

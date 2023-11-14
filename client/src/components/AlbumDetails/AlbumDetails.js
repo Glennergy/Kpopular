@@ -20,16 +20,12 @@ const AlbumDetails = ({
 
   // Determines if selected album is in the current users collection
   useEffect(() => {
-    console.log(albumModalInfo + " has been changed");
     if (modalIsOpen) {
       userCollection.forEach((album) => {
-        if (album.spotify_id === albumModalInfo.spotify_id) {
-          console.log(album.spotify_id);
-          setInCollection(true);
-          return;
-        } else setInCollection(false);
+        if (album.spotify_id == albumModalInfo.spotify_id)
+          return setInCollection(true);
       });
-    }
+    } else return setInCollection(false);
   }, [albumModalInfo]);
 
   const getTracks = () => {
@@ -53,9 +49,13 @@ const AlbumDetails = ({
       onRequestClose={onCancel}
     >
       <div>
-        <div>
-          <img src={closeIcon} alt="close button" onClick={onCancel}></img>
-        </div>
+        <img
+          className="album-modal__exit"
+          src={closeIcon}
+          alt="close button"
+          onClick={onCancel}
+        ></img>
+
         <div className="album-modal__container">
           <div>
             <img
@@ -90,7 +90,11 @@ const AlbumDetails = ({
           </div>
 
           <div className="album-modal__button-container">
-            <Link to={albumModalInfo.url} target="_blank">
+            <Link
+              className="album-modal__button"
+              to={albumModalInfo.url}
+              target="_blank"
+            >
               <span>Listen On Spotify</span>
             </Link>
             <AlbumDetailButtons
