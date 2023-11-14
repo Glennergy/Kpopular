@@ -28,6 +28,7 @@ exports.up = function (knex) {
       table.increments("id").primary();
       table.string("artist_spotifyid").notNullable();
       table.string("artist_name", 75).notNullable();
+      table.string("image_url").notNullable();
     });
 };
 
