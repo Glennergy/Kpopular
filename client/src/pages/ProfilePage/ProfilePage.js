@@ -115,7 +115,7 @@ const ProfilePage = () => {
                 </div>
               </div>
               <div className="profile-page__upper--right">
-                <h2> {profileData.username}</h2>
+                <h2>User Name: {profileData.username}</h2>
                 <h3>Albums Collected: {userCollection.length}</h3>
               </div>
             </div>

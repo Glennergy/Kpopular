@@ -1,20 +1,29 @@
 @import "../../styles/partials/colors";
+@import "../../styles/partials/breakpoints";
 
 .homepage {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   min-height: 800px;
+  background-color: $lavender-color;
   &__upper {
     padding: 16px;
     color: $white-color;
     background-color: $lavender-color;
+    text-align: center;
   }
   &__navigation {
-    padding: 16px;
-    min-height: 800px;
     background-color: $lavender-color;
     border-top: 5px solid $coolgray-color;
+    padding: 16px;
+    align-items: center;
+
+    @include tabletView {
+    }
+    @include desktopView {
+      min-height: 800px;
+    }
   }
   &__title {
     font-size: 32px;
@@ -23,13 +32,21 @@
   }
   &__cardholder {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     margin: 16px 0;
+    align-items: center;
+
+    @include tabletView {
+      flex-direction: column;
+    }
+    @include desktopView {
+      flex-direction: row;
+    }
   }
   &__card {
-    height: 600px;
-    width: 400px;
+    height: 350px;
+    width: 250px;
     text-align: center;
     border: 3px $cloud-color solid;
     border-radius: 15px;
@@ -37,21 +54,46 @@
     flex-direction: column-reverse;
     padding-bottom: 16px;
     color: $powerblue-color;
+    background-size: cover;
+    background-position: center;
+
+    @include tabletView {
+    }
+    @include desktopView {
+      height: 600px;
+      width: 400px;
+    }
 
     &:hover {
       border: 3px solid $white-color;
       color: white;
+      cursor: pointer;
     }
     &--album {
       @extend .homepage__card;
+      background-image: url(https://i.scdn.co/image/ab67616d0000b2731843897a2a72dd5036bbb1fc);
     }
     &--artists {
       @extend .homepage__card;
+      background-image: url(https://i.scdn.co/image/ab6761610000e5eb99752c006407988976248679);
     }
     &--text {
       font-weight: 600;
       font-size: 32px;
       text-decoration: none;
     }
+  }
+
+  &__notlogged {
+    margin: 0 16px;
+    color: white;
+    text-align: center;
+    height: 150px;
+    padding: 16px;
+    border: 2px $cloud-color solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 5px;
   }
 }

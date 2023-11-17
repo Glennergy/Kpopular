@@ -60,7 +60,7 @@ const HomePage = () => {
           </div>
         </>
       ) : (
-        <div>
+        <div className="homepage__notlogged">
           <h1> Login To Start Your Collection! </h1>
           <Login />
         </div>

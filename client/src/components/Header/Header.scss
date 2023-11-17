@@ -1,12 +1,24 @@
-@use "../../styles/partials/colors" as *;
+@import "../../styles/partials/colors";
+@import "../../styles/partials/breakpoints";
 .header {
   &__bottom {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
     background-color: $pink-color;
     border-bottom: 2px solid $lavender-color;
+
+    @include tabletView {
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+    @include desktopView {
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    }
   }
   &__logo {
     text-decoration: none;
@@ -26,6 +38,10 @@
     color: $white-color;
     font-weight: 600;
     font-size: 18px;
+
+    &:hover {
+      color: lightblue;
+    }
   }
   &__nav-link--active {
     &:link,

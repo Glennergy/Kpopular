@@ -3,13 +3,40 @@
 
 .album-cover {
   display: block;
-  height: 220px;
-  width: 200px;
+  height: 200px;
+  width: 160px;
   align-self: center;
   padding: 16px;
+  color: $white-color;
+  font-size: 16px;
+  font-weight: 400;
+
+  @include tabletView {
+  }
+  @include desktopView {
+    height: 220px;
+    width: 200px;
+  }
 
   &__image {
-    height: 150px;
-    width: 170px;
+    height: 100px;
+    width: 125px;
+
+    @include tabletView {
+    }
+    @include desktopView {
+      height: 150px;
+      width: 170px;
+    }
+  }
+  &__name {
+    word-wrap: normal;
+    font-size: 12px;
+
+    @include tabletView {
+      font-size: 16px;
+    }
+    @include desktopView {
+    }
   }
 }

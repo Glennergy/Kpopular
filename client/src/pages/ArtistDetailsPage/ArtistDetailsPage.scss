@@ -1,0 +1,55 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colors" as *;
+
+.artist-details {
+  background-color: $lavender-color;
+  height: 100%;
+  min-height: 900px;
+  display: flex;
+  justify-content: center;
+  &__header {
+    padding: 16px 0;
+    color: $white-color;
+  }
+  &__image {
+    height: 46rem;
+    width: 46rem;
+    text-align: center;
+    align-self: center;
+  }
+  &__left {
+    width: 75%;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  &__links {
+    height: 20px;
+    margin: 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid $cloud-color;
+    width: 50%;
+    justify-content: space-around;
+    padding: 16px;
+  }
+  &__button {
+    padding: 5px;
+    margin: 5px;
+    color: white;
+    background-color: #7a6174;
+    border-radius: 5px;
+    border: 2px outset;
+
+    &:hover {
+      color: black;
+    }
+  }
+}

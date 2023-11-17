@@ -21,7 +21,12 @@ const ArtistPage = () => {
       <div className="artist__container">
         {artists.map((artists, key) => (
           <Link to={artists.artist_spotifyid}>
-            <div className="artist__card">
+            <div
+              className="artist__card"
+              style={{
+                backgroundImage: `url(${artists.image_url})`,
+              }}
+            >
               <h2 className="artist__card--text">{artists.artist_name}</h2>
             </div>
           </Link>

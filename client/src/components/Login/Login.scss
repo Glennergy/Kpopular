@@ -1,0 +1,17 @@
+@import "../../styles/partials/colors";
+
+.button-login {
+  text-decoration: none;
+  font-size: 12px;
+  background-color: $violet-color;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+
+  &__text {
+    width: 300px;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+  }
+}
