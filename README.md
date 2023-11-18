@@ -8,7 +8,10 @@ Users will be able to sign in with their Spotify account, and add albums to thei
 
 SETUP
 
-Requirements: - SQL - Spotify API ( create a spotify app using the following instructions: https://developer.spotify.com/documentation/web-api )
+Requirements:
+
+- SQL - Spotify API ( create a spotify app using the following instructions: https://developer.spotify.com/documentation/web-api )
+- Google - Google API (create an application and in APIs and services, add credentials: console.cloud.google.com ) - ensure redirect uri is http://localhost:5050/auth/google/callback
 
 SQL
 
