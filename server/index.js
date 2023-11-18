@@ -12,6 +12,7 @@ const helmet = require("helmet");
 // Passport library and Github Strategy
 const passport = require("passport");
 const SpotifyStrategy = require("passport-spotify").Strategy;
+const GoogleStrategy = require("passport-google-oauth20");
 
 // Knex instance
 const knex = require("knex")(require("./knexfile.js"));
@@ -48,6 +49,8 @@ app.use(
 
 app.use(passport.session());
 
+// passport strategy for Spotify
+
 passport.use(
   new SpotifyStrategy(
     {
@@ -71,6 +74,50 @@ passport.use(
                 username: profile.username,
                 full_name: profile.displayName,
                 avatar_url: profile.photos[1].value,
+              })
+              .then((userId) => {
+                // Pass the user object to serialize function
+                console.log("Testing" + userId);
+                done(null, { id: userId });
+              })
+              .catch((err) => {
+                console.log("Error creating a user", err);
+              });
+          }
+        })
+        .catch((err) => {
+          console.log("Error fetching a user", err);
+        });
+    }
+  )
+);
+
+// Passport Strategy for Google
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
+    },
+    function (accessToken, refreshToken, expires_in, profile, done) {
+      console.log(profile);
+      knex("user")
+        .select("id")
+        .where({ username: profile.displayName })
+        .then((user) => {
+          if (user.length) {
+            // If user is found, pass the user object to serialize function
+            done(null, user[0]);
+          } else {
+            // If user isn't found, we create a record
+            knex("user")
+              .insert({
+                user_googleid: profile.id,
+                username: profile.displayName,
+                full_name: profile.name.givenName + profile.name.familyName,
+                avatar_url: profile.photos[0].value,
               })
               .then((userId) => {
                 // Pass the user object to serialize function

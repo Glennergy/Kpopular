@@ -3,7 +3,8 @@ exports.up = function (knex) {
     .createTable("user", (table) => {
       table.increments("id").primary();
       table.string("username").notNullable();
-      table.string("user_spotifyid").notNullable();
+      table.string("user_spotifyid");
+      table.string("user_googleid");
       table.string("full_name", 75).notNullable();
       table.string("avatar_url").notNullable();
       table.timestamp("updated_at").defaultTo(knex.fn.now());

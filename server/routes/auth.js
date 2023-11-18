@@ -40,4 +40,17 @@ router.get("/success-callback", (req, res) => {
   }
 });
 
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: `${process.env.CLIENT_URL}/auth-fail`,
+  }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect(process.env.CLIENT_URL);
+  }
+);
+
 module.exports = router;
