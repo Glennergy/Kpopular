@@ -77,7 +77,7 @@ passport.use(
               })
               .then((userId) => {
                 // Pass the user object to serialize function
-                console.log("Testing" + userId);
+                console.log("Testing" + userId[0]);
                 done(null, { id: userId });
               })
               .catch((err) => {
@@ -121,7 +121,7 @@ passport.use(
               })
               .then((userId) => {
                 // Pass the user object to serialize function
-                console.log("Testing" + userId);
+                console.log("Testing" + userId[0]);
                 done(null, { id: userId });
               })
               .catch((err) => {

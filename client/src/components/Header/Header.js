@@ -129,17 +129,6 @@ const Header = () => {
             >
               Artists
             </NavLink>
-            <NavLink
-              className={(navData) =>
-                navData.isActive
-                  ? "header__nav-link header__nav-link--active"
-                  : "header__nav-link--login"
-              }
-              to={authUrl}
-              exact="true"
-            >
-              Login
-            </NavLink>
           </nav>
         </div>
       </section>
