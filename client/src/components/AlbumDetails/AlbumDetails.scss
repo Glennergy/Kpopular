@@ -4,8 +4,9 @@
   padding: 1rem;
   position: absolute;
   background-color: $lavender-color;
+  color: white;
 
-  top: 202px;
+  top: 50px;
   left: 48px;
   right: 48px;
   height: fit-content;
@@ -60,5 +61,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    color: white;
   }
 }

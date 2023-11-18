@@ -34,8 +34,8 @@ const ArtistDetailsPage = () => {
           alt="artist image"
           className="artist-details__image"
         ></img>
-        <div>
-          <h3> Number of Albums</h3>
+        <div className="artist-details__albumsnum">
+          <h3> Number of Albums Released:</h3>
           <p>{artistAlbums.length} Albums</p>
         </div>
         <div className="artist-details__links">

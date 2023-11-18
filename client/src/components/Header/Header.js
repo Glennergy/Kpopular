@@ -133,7 +133,7 @@ const Header = () => {
               className={(navData) =>
                 navData.isActive
                   ? "header__nav-link header__nav-link--active"
-                  : "header__nav-link"
+                  : "header__nav-link--login"
               }
               to={authUrl}
               exact="true"

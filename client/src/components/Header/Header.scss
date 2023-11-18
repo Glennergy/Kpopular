@@ -37,7 +37,24 @@
   &__nav-link {
     color: $white-color;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
+
+    @include tabletView {
+      font-size: 18px;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+    @include desktopView {
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
+    &--login {
+      @extend .header__nav-link;
+      color: black;
+    }
 
     &:hover {
       color: lightblue;
