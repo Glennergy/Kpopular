@@ -48,5 +48,29 @@ exports.seed = async function (knex) {
       image_url:
         "https://i.scdn.co/image/ab6761610000e5eba6b0d348c125a072e5284b3e",
     },
+    {
+      artist_spotifyid: "6RHTUrRF63xao58xh9FXYJ",
+      artist_name: "IVE",
+      image_url:
+        "https://i.scdn.co/image/ab6761610000e5eb0e46f140189de1eba9ab6230",
+    },
+    {
+      artist_spotifyid: "6YVMFz59CuY7ngCxTxjpxE",
+      artist_name: "aespa",
+      image_url:
+        "https://i.scdn.co/image/ab6761610000e5ebbe7e71571cf58f1b9a36f0f7",
+    },
+    {
+      artist_spotifyid: "0ghlgldX5Dd6720Q3qFyQB",
+      artist_name: "TOMORROW X TOGETHER",
+      image_url:
+        "https://i.scdn.co/image/ab6761610000e5eb8b446e5bd3820ac772155b31",
+    },
+    {
+      artist_spotifyid: "7n2Ycct7Beij7Dj7meI4X0",
+      artist_name: "TWICE",
+      image_url:
+        "https://i.scdn.co/image/ab6761610000e5eb8944c8aec8db82f35980b191",
+    },
   ]);
 };

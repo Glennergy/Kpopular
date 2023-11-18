@@ -68,7 +68,7 @@ const AlbumDetailButtons = ({
       );
     }
   } else {
-    return <Login />;
+    return <Login details={true} />;
   }
 };
 

@@ -7,6 +7,11 @@
   justify-content: space-evenly;
   min-height: 800px;
   background-color: $lavender-color;
+  @include tabletView {
+  }
+  @include desktopView {
+    min-height: 900px;
+  }
   &__upper {
     padding: 16px;
     color: $white-color;

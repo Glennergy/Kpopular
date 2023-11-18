@@ -7,7 +7,6 @@ const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const ArtistPage = () => {
   const [artists, setArtists] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     axios.get(`${serverUrl}/album/artists`).then((response) => {

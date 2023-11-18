@@ -3,7 +3,7 @@
 .album-modal {
   padding: 1rem;
   position: absolute;
-  background-color: $powerblue-color;
+  background-color: $lavender-color;
 
   top: 202px;
   left: 48px;
@@ -13,6 +13,10 @@
   &__exit {
     display: absolute;
     top: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
   &__overlay {
     position: fixed;
@@ -41,6 +45,10 @@
     justify-content: center;
     border-radius: 5px;
     border: 2px black outset;
+
+    &:hover {
+      border-color: white;
+    }
 
     span {
       display: flex;

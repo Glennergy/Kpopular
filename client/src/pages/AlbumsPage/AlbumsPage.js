@@ -14,6 +14,7 @@ const AlbumsPage = () => {
   const [userCollection, setUserCollection] = useState([]);
   const { artistid } = useParams();
   const { artistname } = useParams();
+  const [Alphabetical, setAlphabetical] = useState(false);
 
   useEffect(() => {
     // Send a GET request for profile information
@@ -56,6 +57,24 @@ const AlbumsPage = () => {
     });
   }, []);
 
+  const sortAlbum = () => {
+    console.log(artists);
+    if (!Alphabetical) {
+      const newOrder = artists;
+
+      newOrder.sort((a, b) => a.artist_name.localeCompare(b.artist_name));
+      setAlphabetical(true);
+      console.log(newOrder);
+      // setArtists(newOrder);
+    } else if (Alphabetical) {
+      const newOrder = artists;
+      newOrder.sort((a, b) => (a.artist_name > b.artist_name ? -1 : 1));
+      setAlphabetical(false);
+      // setArtists(newOrder);
+      console.log(newOrder);
+    }
+  };
+
   function onModalCancel() {
     setAlbumModalInfo({});
   }
@@ -69,6 +88,7 @@ const AlbumsPage = () => {
           userCollection={userCollection}
           isLoggedIn={isLoggedIn}
         />
+        <h1 className="albumspage__header">Albums</h1>
         <AlbumRow
           artist_id={artistid}
           setAlbumModalInfo={setAlbumModalInfo}
@@ -86,6 +106,7 @@ const AlbumsPage = () => {
           isLoggedIn={isLoggedIn}
         />
         <h1 className="albumspage__header">Albums</h1>
+
         {artists.map((artist, key) => (
           <AlbumRow
             key={key}

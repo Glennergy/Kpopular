@@ -10,11 +10,18 @@
   color: $white-color;
   font-size: 16px;
   font-weight: 400;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   @include tabletView {
   }
   @include desktopView {
-    height: 220px;
+    padding: 16px;
+    margin: 0px;
+    height: 250px;
     width: 200px;
   }
 
@@ -34,9 +41,10 @@
     font-size: 12px;
 
     @include tabletView {
-      font-size: 16px;
+      font-size: 14px;
     }
     @include desktopView {
+      font-size: 14px;
     }
   }
 }

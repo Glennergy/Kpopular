@@ -4,6 +4,11 @@
 .albumspage {
   height: 100%;
   background-color: $lavender-color;
+  @include tabletView {
+  }
+  @include desktopView {
+    min-height: 800px;
+  }
   &__header {
     padding: 16px;
     color: $white-color;

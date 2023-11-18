@@ -7,11 +7,46 @@
   text-align: center;
   padding: 5px;
   border-radius: 5px;
+  border: 2px black outset;
+
+  &:hover {
+    border-color: white;
+  }
+
+  &--details {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    justify-content: center;
+    height: 42px;
+    background-color: $violet-color;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px black outset;
+
+    &:hover {
+      border-color: white;
+    }
+  }
 
   &__text {
     width: 300px;
     font-size: 24px;
     font-weight: 600;
     color: white;
+
+    &--details {
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      color: black;
+      background-color: $violet-color;
+      text-align: center;
+      padding: 5px;
+      border-radius: 5px;
+    }
   }
 }
